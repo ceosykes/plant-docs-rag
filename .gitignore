@@ -1,0 +1,20 @@
+.env
+.env.*
+!.env.example
+web/dist/
+
+# Built state and local runs
+.venv/
+__pycache__/
+store/
+runs/
+node_modules/
+
+# Architecture map and test set stay local (RAG_BUILD_PROMPT, phase 12)
+flowchart.html
+charts/
+app/eval/golden.json
+
+# Session tooling
+.claude/
+.DS_Store

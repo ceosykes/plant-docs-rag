@@ -1,0 +1,53 @@
+# The image serves the API and nothing else. Everything below stays local.
+.env
+.env.*
+.venv
+.git
+__pycache__/
+.pytest_cache/
+
+# Built state is rebuilt inside the image by ingest.
+store/
+runs/
+
+# Architecture and guardrails. A map for anyone who wants to work around them.
+charts/
+flowchart.html
+make_flowchart.py
+
+# Test set, tuning, fixtures, tests.
+**/evals/
+**/tune/
+fixtures/
+tests/
+
+# The front end deploys to Vercel from its own folder.
+web/
+
+# Prompts for the agent, not the app. Server-side system prompts live in prompts_server/.
+prompts/
+
+# Docs and tooling for humans.
+buildview.py
+README.md
+DEPLOY_NOTES.md
+OWNERSHIP.md
+SCENARIO.md
+START_HERE.md
+TOOLS.md
+deploy.sh
+finish.sh
+run_local.sh
+
+# This build's extras: golden set, sweeps, agent-facing prompts, demo notes, launch config.
+app/eval/
+app/tune/
+DICTATION.md
+DEMO_QUESTIONS.md
+FDE_PERSONA.md
+RAG_BUILD_PROMPT.md
+requirements-dev.txt
+deploy.env
+deploy.env.example
+.claude/
+deck/
