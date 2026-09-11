@@ -36,6 +36,8 @@ def runs(thread_id: str) -> list[dict]:
     """All run records for one thread, in order of n."""
     safe = re.sub(r"[^A-Za-z0-9_.-]", "", thread_id)
     files = sorted(config.RUNS_DIR.glob(f"run_{safe}_*.json"), key=lambda p: int(p.stem.rsplit("_", 1)[1]))
+    if not files:
+        raise HTTPException(status_code=404, detail=f"no runs recorded for thread {safe!r}")
     return [strip_prompts(json.loads(p.read_text())) for p in files]
 
 
