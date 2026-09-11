@@ -63,5 +63,8 @@ export function getRuns(thread_id: string): Promise<Run[]> {
 
 export function getSelfCheck(): Promise<SelfCheck> {
   if (USE_FIXTURES) return Promise.resolve(fx.fixtureSelfCheck)
-  return getJson('/internal/selfcheck')
+  // The deployed API gates this route with a token; Vite inlines it at build time.
+  const token = import.meta.env.VITE_INTERNAL_TOKEN || ''
+  return fetch(`${BASE}/internal/selfcheck`, { headers: token ? { 'X-Internal-Token': token } : {} })
+    .then((r) => { if (!r.ok) throw new Error(`self-check returned ${r.status}`); return r.json() as Promise<SelfCheck> })
 }
