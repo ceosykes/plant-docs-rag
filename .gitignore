@@ -18,3 +18,10 @@ app/eval/golden.json
 # Session tooling
 .claude/
 .DS_Store
+
+# Local working notes
+prompts/
+FDE_PERSONA.md
+RAG_BUILD_PROMPT.md
+START_HERE.md
+DICTATION.md
